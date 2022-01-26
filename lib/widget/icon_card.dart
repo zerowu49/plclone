@@ -17,12 +17,12 @@ class IconCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: TextButton(
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(40.0),
-            side: BorderSide(color: Colors.blue),
-          ),
-        ),
+        // style: ElevatedButton.styleFrom(
+        //   shape: RoundedRectangleBorder(
+        //     borderRadius: BorderRadius.circular(40.0),
+        //     side: BorderSide(color: Colors.blue),
+        //   ),
+        // ),
         onPressed: onPressed,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

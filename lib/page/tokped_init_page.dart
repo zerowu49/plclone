@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plclone/controller/data_controller.dart';
-import 'package:plclone/page/additional_form.dart';
 import 'package:plclone/page/result_page.dart';
 import 'package:plclone/utils/styles.dart';
 import 'package:plclone/widget/custom_appbar.dart';
@@ -19,6 +18,7 @@ class TokpedInitPage extends StatelessWidget {
     final _formKey = GlobalKey<FormState>();
     final color = ColorPalettes.tokped;
 
+    _controller.checkbox.value = false;
     return Scaffold(
       appBar: CustomAppBar(
         title: "Check-in PeduliLindungi",
@@ -98,7 +98,12 @@ class TokpedInitPage extends StatelessWidget {
                         child: ElevatedButton(
                           child: Text("Lanjut Scan QR"),
                           onPressed: () {
-                            Get.dialog(AdditionalForm());
+                            if (_controller.name.value != "" &&
+                                _controller.nik.value != '' &&
+                                _controller.checkbox.value)
+                              Get.to(() => ResultPage());
+                            else
+                              Get.snackbar("Cek form", "Isi semua data!");
                           },
                           style: TextButton.styleFrom(
                             padding: EdgeInsets.symmetric(

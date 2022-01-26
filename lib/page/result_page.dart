@@ -18,9 +18,24 @@ class ResultPage extends StatelessWidget {
     DateTime now = DateTime.now();
     String formattedDate =
         DateFormat('EEEE, dd MMM yyyy kk:mm', 'id_ID').format(now);
+    String title = "";
+    switch (_controller.platform.value) {
+      case platformEnum.tokped:
+        title = "Tokopedia";
+        break;
+      case platformEnum.gojek:
+        title = "Gojek";
+        break;
+      case platformEnum.shopee:
+        title = "Shopee";
+        break;
+      default:
+        title = "PeduliLindungi";
+        break;
+    }
     return Scaffold(
       appBar: CustomAppBar(
-        title: "Tokopedia",
+        title: title,
         actions: [
           IconButton(
             tooltip: 'Tokopedia Menu',

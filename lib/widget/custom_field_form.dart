@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:plclone/utils/styles.dart';
 
 class CustomFieldForm extends StatelessWidget {

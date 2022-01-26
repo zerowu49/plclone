@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:plclone/controller/data_controller.dart';
-import 'package:plclone/page/gojek_init_page.dart';
-import 'package:plclone/page/shopee_init_page.dart';
-import 'package:plclone/page/tokped_init_page.dart';
+import 'package:plclone/page/additional_form.dart';
 import 'package:plclone/widget/icon_card.dart';
 import 'package:sizer/sizer.dart';
 
@@ -15,7 +12,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Init get
-    Get.put(DataController());
+    final _controller = Get.put(DataController());
     return Scaffold(
       appBar: AppBar(
         title: Text("Peduli Lindungi Clone"),
@@ -34,30 +31,24 @@ class MainPage extends StatelessWidget {
               platformName: "Tokopedia",
               imagePath: "images/platform/tokped.jpeg",
               onPressed: () {
-                print("Tokped Page");
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (_) => TokpedInitPage()));
-                Get.to(() => TokpedInitPage());
+                _controller.platform.value = platformEnum.tokped;
+                Get.dialog(AdditionalForm());
               },
             ),
             IconCard(
               platformName: "Gojek",
               imagePath: "images/platform/gojek.jpeg",
               onPressed: () {
-                print("Gojek Page");
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (_) => GojekInitPage()));
-                Get.to(() => GojekInitPage());
+                _controller.platform.value = platformEnum.gojek;
+                Get.dialog(AdditionalForm());
               },
             ),
             IconCard(
               platformName: "Shopee",
               imagePath: "images/platform/shopee.png",
               onPressed: () {
-                print("Shopee Page");
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (_) => ShopeeInitPage()));
-                Get.to(() => ShopeeInitPage());
+                _controller.platform.value = platformEnum.shopee;
+                Get.dialog(AdditionalForm());
               },
             ),
           ],

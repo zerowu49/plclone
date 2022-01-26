@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plclone/controller/data_controller.dart';
-import 'package:plclone/page/result_page.dart';
+import 'package:plclone/page/gojek_init_page.dart';
+import 'package:plclone/page/shopee_init_page.dart';
+import 'package:plclone/page/tokped_init_page.dart';
 import 'package:plclone/utils/styles.dart';
 import 'package:plclone/widget/custom_field_form.dart';
 import 'package:sizer/sizer.dart';
@@ -44,7 +46,19 @@ class AdditionalForm extends StatelessWidget {
                   Get.snackbar("Cek form", "Masukkan lokasi checkin");
                 } else {
                   Get.back();
-                  Get.to(() => ResultPage());
+                  switch (_controller.platform.value) {
+                    case platformEnum.tokped:
+                      Get.to(() => TokpedInitPage());
+                      break;
+                    case platformEnum.gojek:
+                      Get.to(() => GojekInitPage());
+                      break;
+                    case platformEnum.shopee:
+                      Get.to(() => ShopeeInitPage());
+                      break;
+                    default:
+                      break;
+                  }
                 }
               },
               style: TextButton.styleFrom(

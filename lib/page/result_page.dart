@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:plclone/controller/data_controller.dart';
 import 'package:plclone/utils/styles.dart';
 import 'package:plclone/widget/custom_appbar.dart';
 import 'package:plclone/widget/custom_info.dart';
@@ -11,11 +14,17 @@ class ResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DataController _controller = Get.find<DataController>();
+    DateTime now = DateTime.now();
+    String formattedDate =
+        DateFormat('EEEE, dd MMM yyyy kk:mm', 'id_ID').format(now);
     return Scaffold(
       appBar: CustomAppBar(
         title: "Tokopedia",
         actions: [
           IconButton(
+            tooltip: 'Tokopedia Menu',
+            splashRadius: 30,
             onPressed: () {},
             icon: Icon(
               Icons.view_comfy,
@@ -106,21 +115,24 @@ class ResultPage extends StatelessWidget {
                         CustomInfo(
                           icon: FlutterIcons.home_city_mco,
                           text1: "Lokasi Check-In",
-                          text2: "Plaza Citra",
+                          text2: _controller.place.value,
                         ),
                         SizedBox(height: 2.h),
                         // Kedua
                         CustomInfo(
                           icon: FlutterIcons.calendar_range_mco,
                           text1: "Tanggal & Waktu Scan",
-                          text2: "Kamis, 23 Dec 2021 16:04",
+                          // text2: "Kamis, 23 Dec 2021 16:04",
+                          text2: formattedDate,
                         ),
                         SizedBox(height: 2.h),
                         // Ketiga
                         CustomInfo(
                           icon: FlutterIcons.ticket_mco,
                           text1: "Kategori Aktivitas",
-                          text2: "Aktivitas Dalam Ruangan",
+                          text2: _controller.kategori.value == ""
+                              ? "Aktivitas Dalam Ruangan"
+                              : _controller.kategori.value,
                           color2: ColorPalettes.color2,
                         ),
                       ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plclone/controller/data_controller.dart';
+import 'package:plclone/page/additional_form.dart';
 import 'package:plclone/page/result_page.dart';
 import 'package:plclone/utils/styles.dart';
 import 'package:plclone/widget/custom_appbar.dart';
@@ -23,6 +24,8 @@ class TokpedInitPage extends StatelessWidget {
         title: "Check-in PeduliLindungi",
         actions: [
           IconButton(
+            tooltip: 'Tokopedia Menu',
+            splashRadius: 30,
             onPressed: () {},
             icon: Icon(
               Icons.view_comfy,
@@ -95,7 +98,7 @@ class TokpedInitPage extends StatelessWidget {
                         child: ElevatedButton(
                           child: Text("Lanjut Scan QR"),
                           onPressed: () {
-                            Get.to(() => ResultPage());
+                            Get.dialog(AdditionalForm());
                           },
                           style: TextButton.styleFrom(
                             padding: EdgeInsets.symmetric(

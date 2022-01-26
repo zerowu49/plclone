@@ -15,17 +15,17 @@ final styles = {
 
 class NormalText extends StatelessWidget {
   final String text;
-  final double fontSize;
-  final FontWeight fontWeight;
-  final Color color;
+  final double? fontSize;
+  final FontWeight? fontWeight;
+  final Color? color;
   final int? maxLines;
   final TextAlign? textAlign;
   final bool isUnderline;
 
   NormalText({
     required this.text,
-    required this.fontSize,
-    required this.fontWeight,
+    this.fontSize,
+    this.fontWeight,
     required this.color,
     this.maxLines,
     this.textAlign,

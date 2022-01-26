@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:plclone/utils/styles.dart';
 
 class CustomFieldForm extends StatelessWidget {
   final String initialValue;
@@ -23,7 +24,7 @@ class CustomFieldForm extends StatelessWidget {
       keyboardType: keyboardType,
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: TextStyle(color: Colors.blueGrey),
+        labelStyle: TextStyle(color: ColorPalettes.whiteDark),
         contentPadding: EdgeInsets.all(20),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(

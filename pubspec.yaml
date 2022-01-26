@@ -26,6 +26,10 @@ dependencies:
   get: ^4.3.8
   sizer: ^2.0.15
   styled_text: ^3.0.0
+  flutter_icons:
+    git:
+      url: https://github.com/adarsh-technocrat/flutter-icons.git
+      branch: null-safety-migration
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -47,8 +51,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/platform/
     - images/
+    - images/platform/
+    - images/barcode/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

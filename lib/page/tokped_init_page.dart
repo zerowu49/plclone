@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plclone/controller/data_controller.dart';
-import 'package:plclone/widget/custom_back_button.dart';
+import 'package:plclone/page/result_page.dart';
+import 'package:plclone/utils/styles.dart';
+import 'package:plclone/widget/custom_appbar.dart';
 import 'package:plclone/widget/custom_checkbox.dart';
 import 'package:plclone/widget/custom_field_form.dart';
 import 'package:plclone/widget/custom_text.dart';
@@ -13,21 +15,12 @@ class TokpedInitPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DataController _controller = Get.find<DataController>();
-    TextEditingController _nameController =
-        TextEditingController(text: _controller.name.value);
-    TextEditingController _nikController =
-        TextEditingController(text: _controller.nik.value);
     final _formKey = GlobalKey<FormState>();
+    final color = ColorPalettes.tokped;
 
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: CustomBackButton(),
-        title: Text(
-          "Check-in PeduliLindungi",
-          style: TextStyle(color: Colors.black),
-          textAlign: TextAlign.start,
-        ),
+      appBar: CustomAppBar(
+        title: "Check-in PeduliLindungi",
         actions: [
           IconButton(
             onPressed: () {},
@@ -37,7 +30,6 @@ class TokpedInitPage extends StatelessWidget {
             ),
           ),
         ],
-        backgroundColor: Colors.white,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -63,7 +55,7 @@ class TokpedInitPage extends StatelessWidget {
                           initialValue: _controller.nik.value,
                           keyboardType: TextInputType.text,
                           labelText: 'Nama Lengkap sesuai KTP',
-                          color: Colors.green,
+                          color: color,
                           onChanged: (val) => _controller.name.value = val,
                         ),
                         SizedBox(height: 3.h),
@@ -71,7 +63,7 @@ class TokpedInitPage extends StatelessWidget {
                           initialValue: _controller.nik.value,
                           keyboardType: TextInputType.number,
                           labelText: 'NIK',
-                          color: Colors.green,
+                          color: color,
                           onChanged: (val) => _controller.nik.value = val,
                         ),
                       ],
@@ -102,11 +94,13 @@ class TokpedInitPage extends StatelessWidget {
                         width: 100.w,
                         child: ElevatedButton(
                           child: Text("Lanjut Scan QR"),
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => ResultPage());
+                          },
                           style: TextButton.styleFrom(
                             padding: EdgeInsets.symmetric(
                                 horizontal: 6.0.w, vertical: 1.5.h),
-                            backgroundColor: Colors.green,
+                            backgroundColor: color,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
                             ),

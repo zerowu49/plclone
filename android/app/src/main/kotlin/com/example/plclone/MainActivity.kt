@@ -1,4 +1,4 @@
-package com.example.plclone
+package com.plclone
 
 import io.flutter.embedding.android.FlutterActivity
 

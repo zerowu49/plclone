@@ -44,6 +44,14 @@ class MainPage extends StatelessWidget {
               },
             ),
             IconCard(
+              platformName: "My Telkomsel",
+              imagePath: "images/platform/my_telkomsel.png",
+              onPressed: () {
+                _controller.platform.value = platformEnum.mytelkomsel;
+                Get.dialog(AdditionalForm());
+              },
+            ),
+            IconCard(
               platformName: "Shopee",
               imagePath: "images/platform/shopee.png",
               onPressed: () {

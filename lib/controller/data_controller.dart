@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-enum platformEnum { tokped, gojek, shopee }
+enum platformEnum { tokped, gojek, mytelkomsel, shopee }
 
 class DataController extends GetxController {
   RxString name = "".obs;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plclone/controller/data_controller.dart';
 import 'package:plclone/page/gojek_init_page.dart';
+import 'package:plclone/page/mytelkomsel_init_page.dart';
 import 'package:plclone/page/shopee_init_page.dart';
 import 'package:plclone/page/tokped_init_page.dart';
 import 'package:plclone/utils/styles.dart';
@@ -53,10 +54,14 @@ class AdditionalForm extends StatelessWidget {
                     case platformEnum.gojek:
                       Get.to(() => GojekInitPage());
                       break;
+                    case platformEnum.mytelkomsel:
+                      Get.to(() => MytelkomselInitPage());
+                      break;
                     case platformEnum.shopee:
                       Get.to(() => ShopeeInitPage());
                       break;
                     default:
+                      Get.to(() => TokpedInitPage());
                       break;
                   }
                 }

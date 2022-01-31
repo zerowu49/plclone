@@ -18,6 +18,7 @@ class TokpedInitPage extends StatelessWidget {
     DataController _controller = Get.find<DataController>();
     final _formKey = GlobalKey<FormState>();
     final color = ColorPalettes.tokped;
+    final fontFamily = "Nunito";
 
     _controller.checkbox.value = false;
     return Scaffold(
@@ -60,6 +61,7 @@ class TokpedInitPage extends StatelessWidget {
                           keyboardType: TextInputType.text,
                           labelText: 'Nama Lengkap sesuai KTP',
                           color: color,
+                          fontFamily: fontFamily,
                           onChanged: (val) => _controller.name.value = val,
                         ),
                         SizedBox(height: 3.h),
@@ -68,6 +70,7 @@ class TokpedInitPage extends StatelessWidget {
                           keyboardType: TextInputType.number,
                           labelText: 'NIK',
                           color: color,
+                          fontFamily: fontFamily,
                           onChanged: (val) => _controller.nik.value = val,
                         ),
                       ],
@@ -77,19 +80,22 @@ class TokpedInitPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(child: CustomCheckbox()),
+                      Expanded(child: CustomCheckbox(color: color)),
                       Expanded(
                         flex: 8,
                         child: CustomText(
                           text:
                               "Data di atas adalah milik saya sendiri. Saya juga menyetujui <boldGreen>Syarat dan Ketentuan</boldGreen> serta <boldGreen>Kebijakan Privasi</boldGreen> PeduliLindungi.",
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: fontFamily,
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 2.h),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
@@ -119,8 +125,11 @@ class TokpedInitPage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 2.h),
-                      Text(
-                        "Segala proses verifikasi termasuk penyimpanan data dan informasi akan dilakukan sepenuhnya oleh dan menjadi tanggung jawab PeduliLindungi.",
+                      NormalText(
+                        text:
+                            "Segala proses verifikasi termasuk penyimpanan data dan informasi akan dilakukan sepenuhnya oleh dan menjadi tanggung jawab PeduliLindungi.",
+                        fontSize: 11.sp,
+                        fontFamily: fontFamily,
                       ),
                     ],
                   ),

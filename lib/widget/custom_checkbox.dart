@@ -3,7 +3,11 @@ import 'package:get/get.dart';
 import 'package:plclone/controller/data_controller.dart';
 
 class CustomCheckbox extends StatefulWidget {
-  CustomCheckbox({Key? key}) : super(key: key);
+  final Color? color;
+  CustomCheckbox({
+    Key? key,
+    this.color,
+  }) : super(key: key);
 
   @override
   _CustomCheckboxState createState() => _CustomCheckboxState();
@@ -14,6 +18,7 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
   @override
   Widget build(BuildContext context) {
     return Checkbox(
+      activeColor: widget.color,
       value: _controller.checkbox.value,
       onChanged: (newValue) {
         setState(() {

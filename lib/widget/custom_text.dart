@@ -21,15 +21,17 @@ class NormalText extends StatelessWidget {
   final int? maxLines;
   final TextAlign? textAlign;
   final bool isUnderline;
+  final String? fontFamily;
 
   NormalText({
     required this.text,
     this.fontSize,
     this.fontWeight,
-    required this.color,
+    this.color,
     this.maxLines,
     this.textAlign,
     this.isUnderline = false,
+    this.fontFamily,
   });
 
   @override
@@ -42,6 +44,7 @@ class NormalText extends StatelessWidget {
         fontSize: fontSize,
         fontWeight: fontWeight,
         color: color,
+        fontFamily: fontFamily,
         decoration: isUnderline ? TextDecoration.underline : null,
       ),
     );
@@ -55,6 +58,7 @@ class CustomText extends StatelessWidget {
   final Color? color;
   final int? maxLines;
   final TextAlign? textAlign;
+  final String? fontFamily;
 
   CustomText({
     required this.text,
@@ -63,6 +67,7 @@ class CustomText extends StatelessWidget {
     this.color,
     this.maxLines,
     this.textAlign,
+    this.fontFamily,
   });
 
   @override
@@ -75,6 +80,7 @@ class CustomText extends StatelessWidget {
         fontSize: fontSize,
         fontWeight: fontWeight,
         color: color,
+        fontFamily: fontFamily,
       ),
       tags: styles,
     );

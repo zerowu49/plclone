@@ -7,6 +7,7 @@ class CustomFieldForm extends StatelessWidget {
   final String labelText;
   final Color color;
   final Function(String) onChanged;
+  final String? fontFamily;
   CustomFieldForm({
     Key? key,
     required this.initialValue,
@@ -14,6 +15,7 @@ class CustomFieldForm extends StatelessWidget {
     required this.labelText,
     required this.color,
     required this.onChanged,
+    this.fontFamily,
   }) : super(key: key);
 
   @override
@@ -23,7 +25,10 @@ class CustomFieldForm extends StatelessWidget {
       keyboardType: keyboardType,
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: TextStyle(color: ColorPalettes.whiteDark),
+        labelStyle: TextStyle(
+          color: ColorPalettes.whiteDark,
+          fontFamily: fontFamily,
+        ),
         contentPadding: EdgeInsets.all(20),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(

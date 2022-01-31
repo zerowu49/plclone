@@ -13,6 +13,8 @@ This app must not to be used for check in into crucial places and by using this 
 ## Todo
 
 - [x] Tokopedia
+      ![Tokopedia Result](github_asset/tokped_result.png)
 - [x] Gojek
+      ![Gojek Result](github_asset/gojek_result.png)
 - [ ] MyTelkomsel
 - [ ] Shopee

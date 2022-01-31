@@ -4,8 +4,13 @@ import 'package:plclone/widget/custom_back_button.dart';
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final String title;
   final List<Widget> actions;
+  final bool? withArrow;
 
-  CustomAppBar({required this.title, required this.actions});
+  CustomAppBar({
+    required this.title,
+    required this.actions,
+    this.withArrow = false,
+  });
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
@@ -14,7 +19,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      leading: CustomBackButton(),
+      leading: CustomBackButton(withArrow: withArrow),
       title: Row(
         children: [
           Text(
@@ -29,3 +34,48 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     );
   }
 }
+
+var tokpedAppBar = CustomAppBar(
+  title: "Check-in PeduliLindungi",
+  actions: [
+    IconButton(
+      tooltip: 'Tokopedia Menu',
+      splashRadius: 30,
+      onPressed: () {},
+      icon: Icon(
+        Icons.view_comfy,
+        color: Colors.black,
+      ),
+    ),
+  ],
+);
+
+var gojekAppBar = CustomAppBar(
+  title: "PeduliLindungi",
+  withArrow: true,
+  actions: [
+    IconButton(
+      tooltip: 'Refresh',
+      splashRadius: 30,
+      onPressed: () {},
+      icon: Icon(
+        Icons.refresh,
+        color: Colors.black,
+      ),
+    ),
+    IconButton(
+      splashRadius: 30,
+      onPressed: null,
+      icon: Icon(
+        Icons.keyboard_arrow_left,
+      ),
+    ),
+    IconButton(
+      splashRadius: 30,
+      onPressed: null,
+      icon: Icon(
+        Icons.keyboard_arrow_right,
+      ),
+    ),
+  ],
+);

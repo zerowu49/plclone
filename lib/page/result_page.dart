@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
@@ -18,36 +20,54 @@ class ResultPage extends StatelessWidget {
     DateTime now = DateTime.now();
     String formattedDate =
         DateFormat('EEEE, dd MMM yyyy kk:mm', 'id_ID').format(now);
-    String title = "";
+    var appBar;
     switch (_controller.platform.value) {
       case platformEnum.tokped:
-        title = "Tokopedia";
+        appBar = CustomAppBar(
+          title: "Tokopedia",
+          actions: [
+            IconButton(
+              tooltip: 'Tokopedia Menu',
+              splashRadius: 30,
+              onPressed: () {},
+              icon: Icon(
+                Icons.view_comfy,
+                color: Colors.black,
+              ),
+            ),
+          ],
+        );
         break;
       case platformEnum.gojek:
-        title = "Gojek";
+        appBar = gojekAppBar;
         break;
       case platformEnum.shopee:
-        title = "Shopee";
+        appBar = "Shopee";
         break;
       default:
-        title = "PeduliLindungi";
+        appBar = CustomAppBar(
+          title: "Tokopedia",
+          actions: [
+            IconButton(
+              tooltip: 'PeduliLindungi',
+              splashRadius: 30,
+              onPressed: () {},
+              icon: Icon(
+                Icons.view_comfy,
+                color: Colors.black,
+              ),
+            ),
+          ],
+        );
         break;
     }
+
+    var list = List<String>.generate(3, (i) => "images/barcode/${i + 1}.jpeg");
+    final _random = new Random();
+    var imagePath = list[_random.nextInt(list.length)];
+    print("imagePath: $imagePath");
     return Scaffold(
-      appBar: CustomAppBar(
-        title: title,
-        actions: [
-          IconButton(
-            tooltip: 'Tokopedia Menu',
-            splashRadius: 30,
-            onPressed: () {},
-            icon: Icon(
-              Icons.view_comfy,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
+      appBar: appBar,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -89,9 +109,12 @@ class ResultPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Image.asset(
-                              'images/barcode/1.jpeg',
-                              scale: 2.5,
+                            Container(
+                              width: 50,
+                              child: Image.asset(
+                                imagePath,
+                                // scale: 2.5,
+                              ),
                             ),
                             ElevatedButton(
                               onPressed: () {},

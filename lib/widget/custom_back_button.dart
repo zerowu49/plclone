@@ -17,7 +17,7 @@ class CustomBackButton extends StatelessWidget {
     return IconButton(
       splashRadius: 20,
       icon: Icon(
-        withArrow == true ? Icons.keyboard_arrow_left : Icons.arrow_back_sharp,
+        withArrow == true ? Icons.close : Icons.arrow_back_sharp,
         color: Colors.black,
         size: 22.0.sp,
       ),

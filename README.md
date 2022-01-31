@@ -1,16 +1,18 @@
 # plclone
 
-A new Flutter project.
+Peduli Lindungi Clone (experimental only)
 
-## Getting Started
+## App Description
 
-This project is a starting point for a Flutter application.
+This project is a clone of Peduli Lindungi that exist in some platform, like Tokopedia and Gojek that used for check in into a place where this app could display what you want to be without actually check-in into the government database (without hit the API).
 
-A few resources to get you started if this is your first Flutter project:
+## Disclaimer
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+This app must not to be used for check in into crucial places and by using this app, all of your action must be under your own responsibility along with the risk.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Todo
+
+- [x] Tokopedia
+- [x] Gojek
+- [ ] MyTelkomsel
+- [ ] Shopee

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:plclone/controller/data_controller.dart';
 import 'package:plclone/page/result_page.dart';
 import 'package:plclone/utils/styles.dart';
 import 'package:plclone/widget/custom_appbar.dart';
@@ -7,10 +8,10 @@ import 'package:plclone/widget/custom_text.dart';
 import 'package:sizer/sizer.dart';
 
 class FormPlPage extends StatelessWidget {
-  const FormPlPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    final _controller = Get.find<DataController>();
+    final platform = _controller.platform.value;
     final color = ColorPalettes.tokped;
     final fontFamily = "Nunito";
     final textData = [
@@ -31,21 +32,15 @@ class FormPlPage extends StatelessWidget {
       },
     ];
 
+    var appBar;
+    if (platform == platformEnum.tokped) {
+      appBar = tokpedAppBar;
+    } else if (platform == platformEnum.gojek) {
+      appBar = gojekAppBar;
+    }
+
     return Scaffold(
-      appBar: CustomAppBar(
-        title: "Check-in PeduliLindungi",
-        actions: [
-          IconButton(
-            tooltip: 'Tokopedia Menu',
-            splashRadius: 30,
-            onPressed: () {},
-            icon: Icon(
-              Icons.view_comfy,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
+      appBar: appBar,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(

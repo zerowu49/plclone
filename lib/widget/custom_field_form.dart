@@ -68,6 +68,7 @@ class CustomFieldForm extends StatelessWidget {
           ),
         ),
       ),
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       inputFormatters: inputFormatters,
       validator: validator,
       onChanged: onChanged,

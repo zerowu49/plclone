@@ -22,20 +22,7 @@ class TokpedInitPage extends StatelessWidget {
 
     _controller.checkbox.value = false;
     return Scaffold(
-      appBar: CustomAppBar(
-        title: "Check-in PeduliLindungi",
-        actions: [
-          IconButton(
-            tooltip: 'Tokopedia Menu',
-            splashRadius: 30,
-            onPressed: () {},
-            icon: Icon(
-              Icons.view_comfy,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
+      appBar: tokpedAppBar,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -79,6 +66,8 @@ class TokpedInitPage extends StatelessWidget {
                           validator: (value) {
                             if (value!.length == 0) {
                               return "Oops, yang ini wajib diisi";
+                            } else if (value.length <= 16) {
+                              return "Oops, harus 16 angka. Cek lagi, ya.";
                             }
                           },
                           inputFormatters: [
@@ -120,7 +109,10 @@ class TokpedInitPage extends StatelessWidget {
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               if (_controller.checkbox.value)
-                                Get.to(() => FormPlPage());
+                                Get.to(
+                                  () => FormPlPage(),
+                                  transition: Transition.noTransition,
+                                );
                               else
                                 Get.snackbar("Cek form", "Isi semua data!");
                             }

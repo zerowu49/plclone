@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:plclone/utils/styles.dart';
 
 class CustomFieldForm extends StatelessWidget {
@@ -8,6 +9,8 @@ class CustomFieldForm extends StatelessWidget {
   final Color color;
   final Function(String) onChanged;
   final String? fontFamily;
+  final String? Function(String?) validator;
+  final List<TextInputFormatter>? inputFormatters;
   CustomFieldForm({
     Key? key,
     required this.initialValue,
@@ -15,7 +18,9 @@ class CustomFieldForm extends StatelessWidget {
     required this.labelText,
     required this.color,
     required this.onChanged,
+    required this.validator,
     this.fontFamily,
+    this.inputFormatters,
   }) : super(key: key);
 
   @override
@@ -48,7 +53,7 @@ class CustomFieldForm extends StatelessWidget {
         ),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: color,
+            color: Colors.red,
           ),
           borderRadius: BorderRadius.all(
             Radius.circular(10.0),
@@ -63,6 +68,8 @@ class CustomFieldForm extends StatelessWidget {
           ),
         ),
       ),
+      inputFormatters: inputFormatters,
+      validator: validator,
       onChanged: onChanged,
     );
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class ColorPalettes {
-  static const white = Colors.white;
+  static const white = Color(0xFFF3F4F6);
   static const whiteDark = Colors.blueGrey;
   static const grey = Color(0xFF77787C);
   static const tokped = Color(0xFF05AC10);

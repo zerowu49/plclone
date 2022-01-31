@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:styled_text/styled_text.dart';
 
-final styles = {
+var styles = {
   'b': StyledTextTag(
-    style: TextStyle(fontWeight: FontWeight.bold),
+    style: TextStyle(fontWeight: FontWeight.w700),
   ),
   'boldGreen': StyledTextTag(
     style: TextStyle(
       fontWeight: FontWeight.bold,
+      color: Colors.green,
+    ),
+  ),
+  'green': StyledTextTag(
+    style: TextStyle(
+      fontWeight: FontWeight.w600,
       color: Colors.green,
     ),
   ),

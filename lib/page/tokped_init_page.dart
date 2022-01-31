@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:plclone/controller/data_controller.dart';
 import 'package:plclone/page/form_pl_page.dart';
-import 'package:plclone/page/result_page.dart';
 import 'package:plclone/utils/styles.dart';
 import 'package:plclone/widget/custom_appbar.dart';
 import 'package:plclone/widget/custom_checkbox.dart';
@@ -57,11 +57,16 @@ class TokpedInitPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CustomFieldForm(
-                          initialValue: _controller.nik.value,
+                          initialValue: _controller.name.value,
                           keyboardType: TextInputType.text,
                           labelText: 'Nama Lengkap sesuai KTP',
                           color: color,
                           fontFamily: fontFamily,
+                          validator: (value) {
+                            if (value!.length == 0) {
+                              return "Oops, yang ini wajib diisi";
+                            }
+                          },
                           onChanged: (val) => _controller.name.value = val,
                         ),
                         SizedBox(height: 3.h),
@@ -71,6 +76,14 @@ class TokpedInitPage extends StatelessWidget {
                           labelText: 'NIK',
                           color: color,
                           fontFamily: fontFamily,
+                          validator: (value) {
+                            if (value!.length == 0) {
+                              return "Oops, yang ini wajib diisi";
+                            }
+                          },
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+                          ],
                           onChanged: (val) => _controller.nik.value = val,
                         ),
                       ],
@@ -105,12 +118,12 @@ class TokpedInitPage extends StatelessWidget {
                         child: ElevatedButton(
                           child: Text("Lanjut Scan QR"),
                           onPressed: () {
-                            if (_controller.name.value != "" &&
-                                _controller.nik.value != '' &&
-                                _controller.checkbox.value)
-                              Get.to(() => ResultPage());
-                            else
-                              Get.snackbar("Cek form", "Isi semua data!");
+                            if (_formKey.currentState!.validate()) {
+                              if (_controller.checkbox.value)
+                                Get.to(() => FormPlPage());
+                              else
+                                Get.snackbar("Cek form", "Isi semua data!");
+                            }
                           },
                           style: TextButton.styleFrom(
                             padding: EdgeInsets.symmetric(

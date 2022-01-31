@@ -29,6 +29,12 @@ class AdditionalForm extends StatelessWidget {
               keyboardType: TextInputType.text,
               labelText: 'Lokasi Checkin (required)',
               color: color,
+              validator: (value) {
+                if (value!.length == 0) {
+                  return "Oops, yang ini wajib diisi";
+                }
+                return "";
+              },
               onChanged: (val) => _controller.place.value = val,
             ),
             SizedBox(height: 3.h),
@@ -37,6 +43,9 @@ class AdditionalForm extends StatelessWidget {
               keyboardType: TextInputType.text,
               labelText: 'Kategori Aktivitas (optional)',
               color: color,
+              validator: (value) {
+                return "";
+              },
               onChanged: (val) => _controller.kategori.value = val,
             ),
             SizedBox(height: 3.h),

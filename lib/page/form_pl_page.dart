@@ -12,6 +12,7 @@ class FormPlPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = ColorPalettes.tokped;
+    final fontFamily = "Nunito";
     final textData = [
       {
         "image_path": "images/image_1.jpeg",
@@ -82,6 +83,8 @@ class FormPlPage extends StatelessWidget {
                                   child: CustomText(
                                     text: e["text"]!,
                                     color: ColorPalettes.grey,
+                                    fontSize: 13.sp,
+                                    fontFamily: fontFamily,
                                   ),
                                 ),
                               ],
@@ -92,8 +95,38 @@ class FormPlPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 10),
-                Text("Pastikan "),
+                Container(height: 10, color: ColorPalettes.white),
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Image.asset(
+                            "images/vaccine_icon.jpeg",
+                            width: 23,
+                          ),
+                          NormalText(
+                            text: "Pastikan hasil tes kamu terdaftar!",
+                            fontSize: 12.0.sp,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5),
+                      CustomText(
+                        text:
+                            "Biar tercatat di PeduliLindungi, pastikan kamu tes COVID-19 di <green>lokasi yang terdaftar Kemenkes.</green>",
+                        color: ColorPalettes.grey,
+                        fontSize: 13.sp,
+                        fontFamily: fontFamily,
+                      ),
+                    ],
+                  ),
+                ),
+                Container(height: 10, color: ColorPalettes.white),
                 SizedBox(height: 10),
                 Center(
                   child: InkWell(
@@ -102,12 +135,14 @@ class FormPlPage extends StatelessWidget {
                     },
                     child: CustomText(
                       text:
-                          "Mau check-in pakai NIK lain? <boldGreen>Ganti NIK</boldGreen>",
+                          "Mau check-in pakai NIK lain? <green>Ganti NIK</green>",
+                      fontFamily: fontFamily,
                       color: ColorPalettes.grey,
+                      fontSize: 13.sp,
                     ),
                   ),
                 ),
-                SizedBox(height: 1.h),
+                SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: SizedBox(

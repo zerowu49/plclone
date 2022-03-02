@@ -11,6 +11,12 @@ var styles = {
       color: Colors.green,
     ),
   ),
+  'boldBlue': StyledTextTag(
+    style: TextStyle(
+      fontWeight: FontWeight.bold,
+      color: Colors.blue,
+    ),
+  ),
   'green': StyledTextTag(
     style: TextStyle(
       fontWeight: FontWeight.w600,

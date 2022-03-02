@@ -80,6 +80,11 @@ flutter:
         - asset: fonts/NunitoSans-Light.ttf
         - asset: fonts/NunitoSans-LightItalic.ttf
           style: italic
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins-Light.ttf
+        - asset: fonts/Poppins-LightItalic.ttf
+          style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

@@ -35,47 +35,47 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   }
 }
 
-var tokpedAppBar = CustomAppBar(
-  title: "Check-in PeduliLindungi",
-  actions: [
-    IconButton(
-      tooltip: 'Tokopedia Menu',
-      splashRadius: 30,
-      onPressed: () {},
-      icon: Icon(
-        Icons.view_comfy,
-        color: Colors.black,
-      ),
-    ),
-  ],
-);
+PreferredSizeWidget tokpedAppBar() => CustomAppBar(
+      title: "Check-in PeduliLindungi",
+      withArrow: true,
+      actions: [
+        IconButton(
+          tooltip: 'Tokopedia Menu',
+          splashRadius: 30,
+          onPressed: () {},
+          icon: Icon(
+            Icons.view_comfy,
+            color: Colors.black,
+          ),
+        ),
+      ],
+    );
 
-var gojekAppBar = CustomAppBar(
-  title: "PeduliLindungi",
-  withArrow: true,
-  actions: [
-    IconButton(
-      tooltip: 'Refresh',
-      splashRadius: 30,
-      onPressed: () {},
-      icon: Icon(
-        Icons.refresh,
-        color: Colors.black,
-      ),
-    ),
-    IconButton(
-      splashRadius: 30,
-      onPressed: null,
-      icon: Icon(
-        Icons.keyboard_arrow_left,
-      ),
-    ),
-    IconButton(
-      splashRadius: 30,
-      onPressed: null,
-      icon: Icon(
-        Icons.keyboard_arrow_right,
-      ),
-    ),
-  ],
-);
+PreferredSizeWidget gojekAppBar() => CustomAppBar(
+      title: "PeduliLindungi",
+      actions: [
+        IconButton(
+          tooltip: 'Refresh',
+          splashRadius: 30,
+          onPressed: () {},
+          icon: Icon(
+            Icons.refresh,
+            color: Colors.black,
+          ),
+        ),
+        IconButton(
+          splashRadius: 30,
+          onPressed: null,
+          icon: Icon(
+            Icons.keyboard_arrow_left,
+          ),
+        ),
+        IconButton(
+          splashRadius: 30,
+          onPressed: null,
+          icon: Icon(
+            Icons.keyboard_arrow_right,
+          ),
+        ),
+      ],
+    );

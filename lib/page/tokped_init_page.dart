@@ -22,7 +22,7 @@ class TokpedInitPage extends StatelessWidget {
 
     _controller.checkbox.value = false;
     return Scaffold(
-      appBar: tokpedAppBar,
+      appBar: tokpedAppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(

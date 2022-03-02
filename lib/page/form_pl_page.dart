@@ -34,9 +34,9 @@ class FormPlPage extends StatelessWidget {
 
     var appBar;
     if (platform == platformEnum.tokped) {
-      appBar = tokpedAppBar;
+      appBar = tokpedAppBar();
     } else if (platform == platformEnum.gojek) {
-      appBar = gojekAppBar;
+      appBar = gojekAppBar();
     }
 
     return Scaffold(

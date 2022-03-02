@@ -22,7 +22,7 @@ class GojekInitPage extends StatelessWidget {
 
     _controller.checkbox.value = false;
     return Scaffold(
-      appBar: gojekAppBar,
+      appBar: gojekAppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(

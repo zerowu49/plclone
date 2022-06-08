@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plclone/controller/data_controller.dart';
 
-class CustomCheckbox extends StatefulWidget {
+class CustomCheckbox extends StatelessWidget {
   final Color? color;
   CustomCheckbox({
     Key? key,
@@ -10,25 +10,20 @@ class CustomCheckbox extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CustomCheckboxState createState() => _CustomCheckboxState();
-}
-
-class _CustomCheckboxState extends State<CustomCheckbox> {
-  DataController _controller = Get.find<DataController>();
-
-  @override
   Widget build(BuildContext context) {
+    DataController _controller = Get.find<DataController>();
+
     if (_controller.enableValidator.value) {
       _controller.checkbox.value = false;
     }
-    return Checkbox(
-      activeColor: widget.color,
-      value: _controller.checkbox.value,
-      onChanged: (newValue) {
-        setState(() {
+    return Obx(
+      () => Checkbox(
+        activeColor: color,
+        value: _controller.checkbox.value,
+        onChanged: (newValue) {
           _controller.checkbox.value = newValue!;
-        });
-      },
+        },
+      ),
     );
   }
 }

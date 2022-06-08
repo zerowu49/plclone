@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:plclone/controller/data_controller.dart';
 import 'package:plclone/page/additional_form.dart';
+import 'package:plclone/page/settings_page.dart';
 import 'package:plclone/widget/icon_card.dart';
 import 'package:sizer/sizer.dart';
 
@@ -16,6 +17,17 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Peduli Lindungi Clone"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Get.to(
+                () => SettingsPage(),
+                transition: Transition.rightToLeft,
+              );
+            },
+            icon: Icon(Icons.settings),
+          ),
+        ],
       ),
       body: Container(
         padding: EdgeInsets.symmetric(

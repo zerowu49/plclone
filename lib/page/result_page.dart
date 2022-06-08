@@ -118,26 +118,40 @@ class BottomPlatformWidget extends StatelessWidget {
   final String imagePath;
   final DataController _controller;
 
+  Widget iconTextPair({required String text, required IconData icon}) {
+    return Row(
+      children: [
+        Icon(icon),
+        SizedBox(width: 10),
+        Text(text),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
-    String formattedDate =
+    String formattedDateTime =
         DateFormat('EEEE, dd MMM yyyy kk:mm', 'id_ID').format(now);
+
+    String formattedDate = DateFormat('dd MMM yyyy', 'id_ID').format(now);
+    String formattedTime = DateFormat('kk:mm', 'id_ID').format(now);
+
+    String name = _controller.name.value;
+    if (name == "") {
+      name = _controller.defaultName.value;
+    }
     if (_controller.platform.value == platformEnum.pl) {
       return Container(
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10),
-              topRight: Radius.circular(10),
-              bottomLeft: Radius.circular(10),
-              bottomRight: Radius.circular(10)),
+          borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
+              color: Colors.grey.withOpacity(0.8),
+              spreadRadius: 1,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
@@ -148,7 +162,12 @@ class BottomPlatformWidget extends StatelessWidget {
             FilterChip(
               label: Text("Check-in Sendiri"),
               backgroundColor: Colors.transparent,
-              shape: StadiumBorder(side: BorderSide()),
+              shape: StadiumBorder(
+                side: BorderSide(
+                  color: Colors.grey,
+                  width: 2,
+                ),
+              ),
               onSelected: (bool value) {
                 print("selected");
               },
@@ -158,35 +177,37 @@ class BottomPlatformWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Row(
-                  children: [
-                    Icon(FlutterIcons.calendar_range_mco),
-                    Text("08 Jun 2022"),
-                  ],
+                iconTextPair(
+                  text: formattedDate,
+                  icon: FlutterIcons.calendar_blank_outline_mco,
                 ),
-                Row(
-                  children: [
-                    Icon(Icons.lock_clock),
-                    Text("13:11"),
-                  ],
+                iconTextPair(
+                  text: formattedTime,
+                  icon: FlutterIcons.clock_outline_mco,
                 ),
               ],
             ),
             SizedBox(height: 10),
-            Text(
-              "The color status below is based on check-in histories at other places",
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 8),
+              child: Text(
+                "The color status below is based on check-in histories at other places",
+              ),
             ),
             SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {},
-              child: NormalText(
-                text: _controller.name.value,
-                color: ColorPalettes.white,
-              ),
-              style: ElevatedButton.styleFrom(
-                primary: ColorPalettes.tokped,
-                elevation: 0,
-                shape: StadiumBorder(),
+            SizedBox(
+              width: Get.width,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: NormalText(
+                  text: name,
+                  color: ColorPalettes.white,
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: ColorPalettes.tokped,
+                  elevation: 0,
+                  shape: StadiumBorder(),
+                ),
               ),
             ),
           ],
@@ -268,7 +289,7 @@ class BottomPlatformWidget extends StatelessWidget {
                   icon: FlutterIcons.calendar_range_mco,
                   text1: "Tanggal & Waktu Scan",
                   // text2: "Kamis, 23 Dec 2021 16:04",
-                  text2: formattedDate,
+                  text2: formattedDateTime,
                 ),
                 SizedBox(height: 2.h),
                 // Ketiga

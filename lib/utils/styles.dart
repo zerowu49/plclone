@@ -7,6 +7,7 @@ class ColorPalettes {
   static const grey = Color(0xFF77787C);
   static const tokped = Color(0xFF05AC10);
   static const mytelkomsel = Color(0xFFED0226);
+  static const pl = Color(0xFF249AD8);
 
   static const scanbackground = Color(0xFF00AA5B);
   static const scanqr = Color(0xFF3DBF83);

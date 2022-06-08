@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:plclone/controller/data_controller.dart';
 import 'package:plclone/page/gojek_init_page.dart';
 import 'package:plclone/page/mytelkomsel_init_page.dart';
+import 'package:plclone/page/pl_init_page.dart';
 import 'package:plclone/page/shopee_init_page.dart';
 import 'package:plclone/page/tokped_init_page.dart';
 import 'package:plclone/utils/styles.dart';
@@ -70,6 +71,9 @@ class AdditionalForm extends StatelessWidget {
                       break;
                     case platformEnum.shopee:
                       Get.to(() => ShopeeInitPage());
+                      break;
+                    case platformEnum.pl:
+                      Get.to(() => PlInitPage());
                       break;
                     default:
                       Get.to(() => TokpedInitPage());

@@ -55,7 +55,16 @@ class MainPage extends StatelessWidget {
               platformName: "Shopee",
               imagePath: "images/platform/shopee.png",
               onPressed: () {
-                _controller.platform.value = platformEnum.shopee;
+                // _controller.platform.value = platformEnum.shopee;
+                // Get.dialog(AdditionalForm());
+                Get.snackbar("Coming Soon!", "Waiting for UI");
+              },
+            ),
+            IconCard(
+              platformName: "Peduli Lindungi",
+              imagePath: "images/pl_logo.png",
+              onPressed: () {
+                _controller.platform.value = platformEnum.pl;
                 Get.dialog(AdditionalForm());
               },
             ),

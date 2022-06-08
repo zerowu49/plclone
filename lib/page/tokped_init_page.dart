@@ -20,7 +20,6 @@ class TokpedInitPage extends StatelessWidget {
     final color = ColorPalettes.tokped;
     final fontFamily = "Nunito";
 
-    _controller.checkbox.value = false;
     return Scaffold(
       appBar: tokpedAppBar(),
       body: SafeArea(
@@ -50,8 +49,10 @@ class TokpedInitPage extends StatelessWidget {
                           color: color,
                           fontFamily: fontFamily,
                           validator: (value) {
-                            if (value!.length == 0) {
-                              return "Oops, yang ini wajib diisi";
+                            if (_controller.enableValidator.value) {
+                              if (value!.length == 0) {
+                                return "Oops, yang ini wajib diisi";
+                              }
                             }
                           },
                           onChanged: (val) => _controller.name.value = val,
@@ -64,10 +65,12 @@ class TokpedInitPage extends StatelessWidget {
                           color: color,
                           fontFamily: fontFamily,
                           validator: (value) {
-                            if (value!.length == 0) {
-                              return "Oops, yang ini wajib diisi";
-                            } else if (value.length <= 16) {
-                              return "Oops, harus 16 angka. Cek lagi, ya.";
+                            if (_controller.enableValidator.value) {
+                              if (value!.length == 0) {
+                                return "Oops, yang ini wajib diisi";
+                              } else if (value.length <= 16) {
+                                return "Oops, harus 16 angka. Cek lagi, ya.";
+                              }
                             }
                           },
                           inputFormatters: [

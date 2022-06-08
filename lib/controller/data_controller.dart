@@ -8,5 +8,7 @@ class DataController extends GetxController {
   RxString place = "".obs;
   RxString kategori = "".obs;
   Rx<platformEnum> platform = platformEnum.gojek.obs;
-  RxBool checkbox = false.obs;
+  RxBool checkbox = true.obs;
+
+  RxBool enableValidator = false.obs;
 }

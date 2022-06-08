@@ -30,8 +30,10 @@ class AdditionalForm extends StatelessWidget {
               labelText: 'Lokasi Checkin (required)',
               color: color,
               validator: (value) {
-                if (value!.length == 0) {
-                  return "Oops, yang ini wajib diisi";
+                if (_controller.enableValidator.value) {
+                  if (value!.length == 0) {
+                    return "Oops, yang ini wajib diisi";
+                  }
                 }
                 return "";
               },

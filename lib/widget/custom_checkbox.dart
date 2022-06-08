@@ -15,8 +15,12 @@ class CustomCheckbox extends StatefulWidget {
 
 class _CustomCheckboxState extends State<CustomCheckbox> {
   DataController _controller = Get.find<DataController>();
+
   @override
   Widget build(BuildContext context) {
+    if (_controller.enableValidator.value) {
+      _controller.checkbox.value = false;
+    }
     return Checkbox(
       activeColor: widget.color,
       value: _controller.checkbox.value,

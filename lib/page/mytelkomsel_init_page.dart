@@ -94,8 +94,10 @@ class MytelkomselInitPage extends StatelessWidget {
                           ),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           validator: (value) {
-                            if (value!.length == 0) {
-                              return "Oops, yang ini wajib diisi";
+                            if (_controller.enableValidator.value) {
+                              if (value!.length == 0) {
+                                return "Oops, yang ini wajib diisi";
+                              }
                             }
                           },
                           onChanged: (val) => _controller.name.value = val,
@@ -128,10 +130,12 @@ class MytelkomselInitPage extends StatelessWidget {
                             FilteringTextInputFormatter.allow(RegExp('[0-9]')),
                           ],
                           validator: (value) {
-                            if (value!.length == 0) {
-                              return "Oops, yang ini wajib diisi";
-                            } else if (value.length <= 16) {
-                              return "Oops, harus 16 angka. Cek lagi, ya.";
+                            if (_controller.enableValidator.value) {
+                              if (value!.length == 0) {
+                                return "Oops, yang ini wajib diisi";
+                              } else if (value.length <= 16) {
+                                return "Oops, harus 16 angka. Cek lagi, ya.";
+                              }
                             }
                           },
                           onChanged: (val) {

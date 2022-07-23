@@ -37,7 +37,7 @@ class ResultPage extends StatelessWidget {
         );
         break;
       case platformEnum.gojek:
-        appBar = gojekAppBar;
+        appBar = gojekAppBar();
         break;
       case platformEnum.shopee:
         appBar = "Shopee";

@@ -88,7 +88,7 @@ class ResultPage extends StatelessWidget {
                 ),
                 SizedBox(height: 2.h),
                 NormalText(
-                  text: "Check-In Berhasil",
+                  text: "Check-In Successful",
                   fontSize: 16.0.sp,
                   fontWeight: FontWeight.w700,
                   color: ColorPalettes.tokped,
@@ -141,6 +141,9 @@ class BottomPlatformWidget extends StatelessWidget {
     if (name == "") {
       name = _controller.defaultName.value;
     }
+
+    String place = _controller.place.value;
+
     if (_controller.platform.value == platformEnum.pl) {
       return Container(
         decoration: BoxDecoration(
@@ -160,7 +163,12 @@ class BottomPlatformWidget extends StatelessWidget {
         child: Column(
           children: [
             FilterChip(
-              label: Text("Check-in Sendiri"),
+              label: Text(
+                "Check-in Sendiri",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               backgroundColor: Colors.transparent,
               shape: StadiumBorder(
                 side: BorderSide(
@@ -172,7 +180,37 @@ class BottomPlatformWidget extends StatelessWidget {
                 print("selected");
               },
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 1.h),
+            Container(
+              constraints: BoxConstraints(maxWidth: 50.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(Icons.location_on),
+                  SizedBox(width: 2.w),
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        place,
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(height: 1.h),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 8),
+              child: CustomText(
+                text: "Total Occupancy: <b>310</b> / 2000",
+                color: Colors.black54,
+              ),
+            ),
+            SizedBox(height: 1.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -187,14 +225,7 @@ class BottomPlatformWidget extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 10),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 8),
-              child: Text(
-                "The color status below is based on check-in histories at other places",
-              ),
-            ),
-            SizedBox(height: 10),
+            SizedBox(height: 1.h),
             SizedBox(
               width: Get.width,
               child: ElevatedButton(

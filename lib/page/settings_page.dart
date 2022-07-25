@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plclone/controller/data_controller.dart';
 import 'package:plclone/widget/custom_field_form.dart';
+import 'package:sizer/sizer.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
+
+  bool checkVisitorForm(DataController _controller) {
+    return _controller.totalVisitor.value.length > 0 &&
+        _controller.maxVisitor.value.length > 0;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,6 +110,60 @@ class SettingsPage extends StatelessWidget {
                     ),
                     textConfirm: "OK",
                     onConfirm: () => Get.back(),
+                  );
+                },
+              ),
+              ListTile(
+                title: Text(
+                  "Visitor Amount",
+                  style: titleStyle,
+                ),
+                subtitle: Text(
+                  "Set total visitor and max visitor here",
+                ),
+                leading: Icon(Icons.people),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onTap: () {
+                  Get.defaultDialog(
+                    title: "Visitor Amount",
+                    barrierDismissible: checkVisitorForm(_controller),
+                    content: Column(
+                      children: [
+                        CustomFieldForm(
+                          initialValue: _controller.totalVisitor.value,
+                          keyboardType: TextInputType.number,
+                          labelText: 'Total Visitor',
+                          color: color,
+                          validator: (value) {
+                            if (value!.length == 0) {
+                              return "Oops, yang ini wajib diisi";
+                            }
+                            return "";
+                          },
+                          onChanged: (val) =>
+                              _controller.totalVisitor.value = val,
+                        ),
+                        SizedBox(height: 2.h),
+                        CustomFieldForm(
+                          initialValue: _controller.maxVisitor.value,
+                          keyboardType: TextInputType.number,
+                          labelText: 'Max Visitor',
+                          color: color,
+                          validator: (value) {
+                            if (value!.length == 0) {
+                              return "Oops, yang ini wajib diisi";
+                            }
+                            return "";
+                          },
+                          onChanged: (val) =>
+                              _controller.maxVisitor.value = val,
+                        ),
+                      ],
+                    ),
+                    textConfirm: "OK",
+                    onConfirm: () {
+                      if (checkVisitorForm(_controller)) Get.back();
+                    },
                   );
                 },
               ),

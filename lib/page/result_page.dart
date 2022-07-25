@@ -47,7 +47,7 @@ class ResultPage extends StatelessWidget {
           automaticallyImplyLeading: false,
           leading: CustomBackButton(withArrow: false),
           elevation: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
         );
         break;
       default:
@@ -143,6 +143,8 @@ class BottomPlatformWidget extends StatelessWidget {
     }
 
     String place = _controller.place.value;
+    String totalVisitor = _controller.totalVisitor.value;
+    String maxVisitor = _controller.maxVisitor.value;
 
     if (_controller.platform.value == platformEnum.pl) {
       return Container(
@@ -206,7 +208,7 @@ class BottomPlatformWidget extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 8),
               child: CustomText(
-                text: "Total Occupancy: <b>310</b> / 2000",
+                text: "Total Occupancy: <b>$totalVisitor</b> / $maxVisitor",
                 color: Colors.black54,
               ),
             ),

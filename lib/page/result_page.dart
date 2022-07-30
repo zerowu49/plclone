@@ -88,7 +88,7 @@ class ResultPage extends StatelessWidget {
                 ),
                 SizedBox(height: 2.h),
                 NormalText(
-                  text: "Check-In Successful",
+                  text: "Check-In Berhasil",
                   fontSize: 16.0.sp,
                   fontWeight: FontWeight.w700,
                   color: ColorPalettes.tokped,
@@ -118,12 +118,19 @@ class BottomPlatformWidget extends StatelessWidget {
   final String imagePath;
   final DataController _controller;
 
+  static const customFontWeight = FontWeight.w600;
+
   Widget iconTextPair({required String text, required IconData icon}) {
     return Row(
       children: [
         Icon(icon),
         SizedBox(width: 10),
-        Text(text),
+        Text(
+          text,
+          style: TextStyle(
+            fontWeight: customFontWeight,
+          ),
+        ),
       ],
     );
   }
@@ -135,7 +142,7 @@ class BottomPlatformWidget extends StatelessWidget {
         DateFormat('EEEE, dd MMM yyyy kk:mm', 'id_ID').format(now);
 
     String formattedDate = DateFormat('dd MMM yyyy', 'id_ID').format(now);
-    String formattedTime = DateFormat('kk:mm', 'id_ID').format(now);
+    String formattedTime = DateFormat('hh:mm a', 'id_ID').format(now);
 
     String name = _controller.name.value;
     if (name == "") {
@@ -184,21 +191,23 @@ class BottomPlatformWidget extends StatelessWidget {
             ),
             SizedBox(height: 1.h),
             Container(
-              constraints: BoxConstraints(maxWidth: 50.w),
+              constraints: BoxConstraints(maxWidth: 60.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(Icons.location_on),
+                  Icon(Icons.location_on_outlined),
                   SizedBox(width: 2.w),
                   Expanded(
-                    child: Center(
-                      child: Text(
-                        place,
-                        style: TextStyle(fontWeight: FontWeight.w600),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+                    child: Text(
+                      place,
+                      style: TextStyle(
+                        fontWeight: customFontWeight,
+                        fontSize: 20,
                       ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
                     ),
                   )
                 ],
@@ -208,8 +217,8 @@ class BottomPlatformWidget extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 8),
               child: CustomText(
-                text: "Total Occupancy: <b>$totalVisitor</b> / $maxVisitor",
-                color: Colors.black54,
+                text: "Total Keramaian: <b>$totalVisitor</b> / $maxVisitor",
+                color: Colors.black,
               ),
             ),
             SizedBox(height: 1.h),
@@ -237,7 +246,7 @@ class BottomPlatformWidget extends StatelessWidget {
                   color: ColorPalettes.white,
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: ColorPalettes.tokped,
+                  primary: ColorPalettes.scanbackground,
                   elevation: 0,
                   shape: StadiumBorder(),
                 ),

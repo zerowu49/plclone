@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
 import 'package:plclone/controller/data_controller.dart';
 import 'package:plclone/utils/const.dart';
 import 'package:plclone/widget/custom_field_form.dart';
@@ -108,20 +107,17 @@ class SettingsPage extends StatelessWidget {
                         }
                         return "";
                       },
-                      onChanged: (val) async {
-                        try {
-                          var box = await Hive.openBox(Const.storageBoxName);
-                          await box.put(Const.nameKey, val);
-                          print(
-                              "yes we could put it: ${box.get(Const.nameKey)}");
-                        } catch (e) {
-                          print("error in saving default name : $e");
-                        }
+                      onChanged: (val) {
                         _controller.defaultName.value = val;
                       },
                     ),
                     textConfirm: "OK",
-                    onConfirm: () => Get.back(),
+                    onConfirm: () {
+                      if (_controller.defaultName.value != "") {
+                        _controller.saveDefaultName();
+                        Get.back();
+                      }
+                    },
                   );
                 },
               ),
@@ -174,7 +170,10 @@ class SettingsPage extends StatelessWidget {
                     ),
                     textConfirm: "OK",
                     onConfirm: () {
-                      if (checkVisitorForm(_controller)) Get.back();
+                      if (checkVisitorForm(_controller)) {
+                        _controller.saveVisitorAmount();
+                        Get.back();
+                      }
                     },
                   );
                 },

@@ -34,6 +34,10 @@ class CustomFieldForm extends StatelessWidget {
           color: ColorPalettes.whiteDark,
           fontFamily: fontFamily,
         ),
+        errorStyle: TextStyle(
+          color: Colors.red,
+          fontFamily: fontFamily,
+        ),
         contentPadding: EdgeInsets.all(20),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -68,7 +72,7 @@ class CustomFieldForm extends StatelessWidget {
           ),
         ),
       ),
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode: AutovalidateMode.always,
       inputFormatters: inputFormatters,
       validator: validator,
       onChanged: onChanged,

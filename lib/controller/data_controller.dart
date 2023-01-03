@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:get/get.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:plclone/utils/const.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -21,9 +22,14 @@ class DataController extends GetxController {
   // Variable is in String but input is in number
   RxString totalVisitor = "89".obs;
   RxString maxVisitor = "1000".obs;
+  RxString versionName = "".obs;
 
   @override
   void onInit() async {
+    /// Get Version Name
+    getVersionName();
+
+    /// Get Local DB data
     try {
       // Obtain shared preferences.
       final prefs = await SharedPreferences.getInstance();
@@ -47,6 +53,19 @@ class DataController extends GetxController {
     }
 
     super.onInit();
+  }
+
+  /// GET APP VERSION
+  void getVersionName() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    String appName = packageInfo.appName;
+    String packageName = packageInfo.packageName;
+    String version = packageInfo.version;
+    String buildNumber = packageInfo.buildNumber;
+
+    versionName.value =
+        "Version $version ($buildNumber) - $appName ($packageName)";
   }
 
   void saveDefaultName() async {

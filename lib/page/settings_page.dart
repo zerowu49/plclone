@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plclone/controller/data_controller.dart';
-import 'package:plclone/utils/const.dart';
 import 'package:plclone/widget/custom_field_form.dart';
 import 'package:sizer/sizer.dart';
 
@@ -178,6 +177,7 @@ class SettingsPage extends StatelessWidget {
                   );
                 },
               ),
+              Center(child: Text(_controller.versionName.value)),
             ],
           ),
         ),
